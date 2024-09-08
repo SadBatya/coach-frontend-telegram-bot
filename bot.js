@@ -1,7 +1,7 @@
 const { Bot } = require("grammy");
-const bot = new Bot("7011710387:AAFV-IlURShWMvZBmR_cedpu6LcOqKWZ16U");
+const bot = new Bot(process.env.API_BOT);
 const sendRandomQuestion = require('./setRandomQuiestion')
-
+let time = 300000
 
 bot.command("start", async (ctx) => {
   await ctx.reply(
@@ -12,7 +12,7 @@ bot.command("start", async (ctx) => {
 bot.command('poll', (ctx) => {
   setInterval(async () => {
     await sendRandomQuestion(ctx);
-  }, 300000);
+  }, time);
 });
 
 bot.start();
